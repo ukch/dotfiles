@@ -1,0 +1,10 @@
+#alias rm="echo Please use trash or /bin/rm && false"
+alias ack="ack-grep -a"
+alias gvir="gvim --remote"
+
+export PIP_REQUIRE_VIRTUALENV=1
+export ACK_PAGER=less
+export APP_ENGINE_SDK=~/opt/google_appengine
+
+export PATH=$PATH:$HOME/opt/android-sdk-linux/tools:$HOME/opt/android-sdk-linux/platform-tools:$HOME/opt/google_appengine
+#export PYTHONPATH=$APP_ENGINE_SDK
