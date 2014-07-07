@@ -1,5 +1,4 @@
-#alias rm="echo Please use trash or /bin/rm && false"
-alias ack="ack-grep -a"
+alias rm="echo Please use trash or /bin/rm && false"
 alias gvir="gvim --remote"
 
 export PIP_REQUIRE_VIRTUALENV=1
