@@ -42,7 +42,7 @@ export LESSOPEN="| /usr/bin/lesspipe %s";
 export LESSCLOSE="/usr/bin/lesspipe %s %s";
 
 source ~/.aliases
-source /etc/bash_completion.d/virtualenvwrapper
+source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
