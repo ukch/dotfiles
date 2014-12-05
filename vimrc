@@ -26,6 +26,7 @@ Bundle 'tpope/vim-eunuch'
 Bundle 'nvie/vim-flake8'
 Bundle 'honza/vim-snippets'
 Bundle 'elzr/vim-json'
+au BufRead,BufNewFile *.json set filetype=json
 
 Bundle 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
