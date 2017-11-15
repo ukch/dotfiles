@@ -31,12 +31,12 @@ ZSH_THEME="mh"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(battery command-not-found debian django git github nyan python)
 
+# Customize to your needs...
+export PATH=$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+
 source $ZSH/oh-my-zsh.sh
 
 setopt interactivecomments
-
-# Customize to your needs...
-export PATH=/home/joelcross/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 
 export LESSOPEN="| /usr/bin/lesspipe %s";
 export LESSCLOSE="/usr/bin/lesspipe %s %s";
@@ -47,6 +47,10 @@ source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
+# Fix for Tilix
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+    source /etc/profile.d/vte.sh
+fi
 
 # Switch virtualenv when you switch dir
 has_virtualenv() {
@@ -66,5 +70,10 @@ venv_cd () {
 #alias cd="venv_cd"
 
 alias venv=has_virtualenv
+
+export NVM_DIR="/home/joel/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+nvm use stable > /dev/null
 
 venv  # Try and get into a virtualenv on start

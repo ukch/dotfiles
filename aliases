@@ -1,9 +1,17 @@
+# vim: set ft=sh
+
 alias rm="echo Please use trash or /bin/rm && false"
 alias gvir="gvim --remote"
+alias nvir="nvr --remote"
+alias bower=./node_modules/bower/bin/bower
+alias vim="nvim -n" # ignore swap files for terminal vim sessions
+alias heroku=heroku-venv
+alias webpack=./node_modules/.bin/webpack
 
+export WERKZEUG_DEBUG_PIN=off
 export PIP_REQUIRE_VIRTUALENV=1
 export ACK_PAGER=less
-export APP_ENGINE_SDK=~/opt/google_appengine
+export apt_pref=apt
+export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 
-export PATH=$PATH:$HOME/opt/android-sdk-linux/tools:$HOME/opt/android-sdk-linux/platform-tools:$HOME/opt/google_appengine
-#export PYTHONPATH=$APP_ENGINE_SDK
+export PATH=$PATH:$HOME/opt/android-sdk-linux/tools:$HOME/opt/android-sdk-linux/platform-tools:$HOME/opt/google_appengine:$HOME/.composer/vendor/bin
