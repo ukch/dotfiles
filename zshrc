@@ -24,12 +24,12 @@ ZSH_THEME="mh"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(battery command-not-found debian django git github nyan python)
+plugins=(chucknorris colored-man-pages debian django git github fabric heroku history node pip python pyenv sudo command-not-found docker-machine)
 
 # Customize to your needs...
 export PATH=$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
@@ -41,7 +41,7 @@ setopt interactivecomments
 export LESSOPEN="| /usr/bin/lesspipe %s";
 export LESSCLOSE="/usr/bin/lesspipe %s %s";
 
-source ~/.aliases
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
 ### Added by the Heroku Toolbelt
@@ -57,6 +57,10 @@ has_virtualenv() {
     if [ -e .venv ]; then
         workon `cat .venv`
     else
+        if [ -e Pipfile ]; then
+            pipenv shell
+            return
+        fi
         type deactivate > /dev/null 2>&1
         if [ $? -eq 0 ]; then
             deactivate
@@ -71,9 +75,15 @@ venv_cd () {
 
 alias venv=has_virtualenv
 
-export NVM_DIR="/home/joel/.nvm"
+export NVM_DIR=/usr/local/nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-nvm use stable > /dev/null
-
 venv  # Try and get into a virtualenv on start
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/joel/.sdkman"
+[[ -s "/home/joel/.sdkman/bin/sdkman-init.sh" ]] && source "/home/joel/.sdkman/bin/sdkman-init.sh"
+
+# this must be at the end because aliasing 'rm' messes with the sdkman script
+source ~/.aliases

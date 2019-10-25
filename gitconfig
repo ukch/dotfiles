@@ -17,6 +17,8 @@
 	# Show files ignored by git:
 	ign = ls-files -o -i --exclude-standard
 	up = "!git remote update origin -p; git merge --ff-only @{u}; git submodule update"
+[diff]
+    tool = meld
 [color]
 	ui = true
 [gui]
@@ -27,3 +29,9 @@
 	enabled = true
 [grep]
 	linenumber = true
+[user]
+	signingkey = CCA91ED95ADC0B6B
+[commit]
+	gpgsign = false
+[pager]
+    branch =
