@@ -29,7 +29,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(chucknorris colored-man-pages debian django git github fabric heroku history node pip python pyenv sudo command-not-found docker-machine)
+plugins=(chucknorris colored-man-pages debian django git github fabric heroku history node pip python sudo command-not-found docker-machine)
 
 # Customize to your needs...
 export PATH=$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
@@ -75,7 +75,7 @@ venv_cd () {
 
 alias venv=has_virtualenv
 
-export NVM_DIR=/usr/local/nvm
+export NVM_DIR=~/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 venv  # Try and get into a virtualenv on start
