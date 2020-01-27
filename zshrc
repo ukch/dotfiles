@@ -49,7 +49,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # Fix for Tilix
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-    source /etc/profile.d/vte.sh
+    source /etc/profile.d/vte-2.91.sh
 fi
 
 # Switch virtualenv when you switch dir
