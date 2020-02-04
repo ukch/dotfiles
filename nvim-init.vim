@@ -93,6 +93,8 @@ let g:ale_linter_aliases = {'jsx': 'css'}
 "let g:syntastic_html_tidy_exec = 'tidy5'
 "let g:syntastic_coffee_coffeelint_args = "-f ~/.coffeelint.json --csv"
 
+Plug 'vim-airline/vim-airline'
+
 nnoremap ll :lfirst<CR>
 nnoremap ln :lnext<CR>
 nnoremap lp :lprevious<CR>
