@@ -29,10 +29,11 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(chucknorris colored-man-pages debian django git github fabric heroku history node pip python sudo command-not-found docker-machine)
+plugins=(chucknorris colored-man-pages debian django github fabric heroku history node pip python sudo command-not-found docker-machine virtualenvwrapper)
 
 # Customize to your needs...
 export PATH=$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+fpath+=~/.zfunc
 
 source $ZSH/oh-my-zsh.sh
 
@@ -42,7 +43,7 @@ export LESSOPEN="| /usr/bin/lesspipe %s";
 export LESSCLOSE="/usr/bin/lesspipe %s %s";
 
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+#source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -57,8 +58,8 @@ has_virtualenv() {
     if [ -e .venv ]; then
         workon `cat .venv`
     else
-        if [ -e Pipfile ]; then
-            pipenv shell
+        if [ -e pyproject.toml ]; then
+            poetry shell
             return
         fi
         type deactivate > /dev/null 2>&1

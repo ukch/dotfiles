@@ -17,9 +17,18 @@ if exists('g:GuiLoaded') || $TERM == "xterm-256color"
     Plug 'chriskempson/base16-vim'
 endif
 
+if exists('g:GtkGuiLoaded')
+    source /usr/share/nvim-gtk/runtime/plugin/nvim_gui_shim.vim
+    call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
+    NGPreferDarkTheme on
+    nnoremap <leader>a :NGToggleSidebar<CR>
+endif
+
 Plug 'alexlafroscia/postcss-syntax.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'othree/es.next.syntax.vim'
+Plug 'chrisbra/Recover.vim'
+Plug 'bogado/file-line'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 autocmd FileType kotlin let b:coc_root_patterns = ['.gradle']
@@ -56,11 +65,12 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 set completeopt=menu,longest,menuone
 
 " CtrlP
-"Plug 'ctrlpvim/ctrlp.vim'
-"nnoremap <leader>e :CtrlP<CR>
-"nnoremap <leader>b :CtrlPBuffer<CR>
+Plug 'ctrlpvim/ctrlp.vim'
+nnoremap <leader>e :CtrlP<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
 "nnoremap <leader>t :CtrlPBufTag<CR>
-"let g:ctrlp_working_path_mode = 'r'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 Plug 'alvan/vim-closetag'
 
@@ -68,7 +78,7 @@ Plug 'w0rp/ale'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 let g:ale_linters = {
-\    'python': ['flake8'],
+\    'python': ['flake8', 'black'],
 \    'javascript.jsx': ['stylelint, eslint'],
 \    'typescript': ['tslint'],
 \}
@@ -94,6 +104,9 @@ let g:ale_linter_aliases = {'jsx': 'css'}
 "let g:syntastic_coffee_coffeelint_args = "-f ~/.coffeelint.json --csv"
 
 Plug 'vim-airline/vim-airline'
+let g:airline#extensions#default#section_truncate_width = {
+    \ 'b': 150,
+    \ }
 
 nnoremap ll :lfirst<CR>
 nnoremap ln :lnext<CR>
@@ -103,10 +116,10 @@ Plug 'scrooloose/nerdcommenter'
 
 nmap <M-c> <leader>c<space>
 
-Plug 'has2k1/vim-dmenu-finder'
-let g:dmenu_finder_dmenu_command="dmenu -i -l 20"
-nnoremap <leader>e :DmenuFinderFindFile<CR>
-nnoremap <leader>b :DmenuFinderFindBuffer<CR>
+"Plug 'has2k1/vim-dmenu-finder'
+"let g:dmenu_finder_dmenu_command="dmenu -i -l 20"
+"nnoremap <leader>e :DmenuFinderFindFile<CR>
+"nnoremap <leader>b :DmenuFinderFindBuffer<CR>
 
 " NyaoVim plugins
 Plug 'rhysd/nyaovim-popup-tooltip'
@@ -168,6 +181,8 @@ if !&sidescrolloff
 endif
 set display+=lastline
 set nostartofline       " Do not jump to first character with page commands.
+
+set undofile            " Save undo data to a file to enable persistency
 
 " Tell Vim which characters to show for expanded TABs,
 " trailing whitespace, and end-of-lines. VERY useful!
