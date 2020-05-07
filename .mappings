@@ -1,0 +1,9 @@
+# vim:set ft=toml
+
+[general]
+aliases         = "~/.aliases"
+gitconfig       = "~/.gitconfig"
+gitignore       = "~/.gitignore"
+"nvim-init.vim" = "~/.config/nvim/init.vim"
+zshrc           = "~/.zshrc"
+vimrc           = "~/.vimrc"  # for vim.tiny
