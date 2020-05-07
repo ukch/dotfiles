@@ -27,6 +27,7 @@ endif
 Plug 'alexlafroscia/postcss-syntax.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'othree/es.next.syntax.vim'
+Plug 'neo4j-contrib/cypher-vim-syntax'
 Plug 'chrisbra/Recover.vim'
 Plug 'bogado/file-line'
 
