@@ -1,212 +1,79 @@
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+set encoding=utf-8
 
-Bundle 'tpope/vim-fugitive'
-autocmd QuickFixCmdPost *grep* cwindow
+"""""""""""""""""""""""""
+" Basic features
+"""""""""""""""""""""""""
 
-"FuzzyFinder: TODO replace with FZF
-Bundle 'fuzzyfinder'
-nmap <leader>e :FufFileWithFullCwd<CR>
-nmap <leader>b :FufBuffer<CR>
-nmap <leader>v :FufBufferTag<CR>
-
-Bundle 'TaskList.vim'
-
-Bundle 'ervandew/supertab'
-Bundle 'closetag.vim'
-Bundle 'scrooloose/nerdcommenter'
-
-nmap <M-c> <leader>c<space>
-
-"FIXME make fzf work (without using Plug!)
-"Bundle 'junegunn/fzf' {'dir': '~/.fzf', 'do': './install --all'}
-"Bundle 'junegunn/fzf.vim'
-
-
-
-"Bundle 'IndentConsistencyCop'
-"Bundle 'IndentConsistencyCopAutoCmds'
-let g:indentconsistencycop_highlighting = 'sgm'
-let g:indentconsistencycop_non_indent_pattern = ' \*\%([*/ \t]\|$\)'
-" TODO why doesn't this work?
-" See http://www.vim.org/scripts/script.php?script_id=1691
-"let g:indentconsistencycop_filetypes .= ',scss' 
-let g:indentconsistencycop_non_indent_pattern = ' \*[*/ \t]'
-
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'garbas/vim-snipmate'
-Bundle 'tpope/vim-eunuch'
-"Bundle 'nvie/vim-flake8'
-Bundle 'honza/vim-snippets'
-Bundle 'elzr/vim-json'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'mustache/vim-mustache-handlebars'
-
-Bundle 'stephenway/postcss.vim'
-
-Bundle 'hdima/python-syntax'
-let python_print_as_function=0
-
-" Colour scheme
-"Bundle 'adampasz/vim-stonewashed'
-Bundle 'chriskempson/base16-vim'
-set background=dark
-if has('gui_running')
-  colorscheme base16-atelier-forest
-  set guioptions=
+" Display options
+set pastetoggle=<F12>
+set number
+set list!                       " Display unprintable characters
+set listchars=tab:▸\ ,trail:•,extends:»,precedes:«
+if $TERM =~ '256color'
+  set t_Co=256
+elseif $TERM =~ '^xterm$'
+  set t_Co=256
 endif
 
-au BufRead,BufNewFile *.json set filetype=json
-au BufRead,BufNewFile *.rml set filetype=xml
-au BufRead,BufNewFile *.txt set filetype=django
-
-Bundle 'majutsushi/tagbar'
-nmap <F8> :TagbarToggle<CR>
-let g:tagbar_left = 1
-let g:tagbar_width = 30
-let g:tagbar_indent = 1
-let g:tagbar_expand = 2
-let g:tagbar_autoshowtag = 1
-
-"Bundle "wookiehangover/jshint.vim"
-
-"Bundle 'scrooloose/syntastic'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-"Bundle "roman/golden-ratio"
-
-let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_php_checkers = ['php', 'phpmd']
-let g:syntastic_css_checkers = ['stylelint']
-let g:syntastic_scss_checkers = ['stylelint']
-let g:syntastic_less_checkers = ['stylelint']
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_html_tidy_exec = 'tidy5'
-let g:syntastic_coffee_coffeelint_args = "-f ~/.coffeelint.json --csv"
-
-nnoremap ll :lfirst<CR>
-nnoremap ln :lnext<CR>
-nnoremap lp :lprevious<CR>
-
-Bundle 'bogado/file-line'
-Bundle 'py-coverage'
-nnoremap <silent> <F12> :PyCoverageHighlight<cr>:PyCoverageSetQuickfix<cr>:cwindow<cr>
-nnoremap <silent> <S-F12> :PyCoverageClear<cr>
-Bundle 'sudo.vim'
-Bundle 'SyntaxRange'
-
-" MacVim magic
-"let macvim_skip_cmd_opt_movement = 1
-"no   <M-Left>       <C-Left>
-"no!  <M-Left>       <C-Left>
-"no   <M-Right>      <C-Right>
-"no!  <M-Right>      <C-Right>
-
-" From http://www.phacks.net/macvim-code-completion-syntax-highlighting-for-python-pyqt4-twisted-on-mac-osx-snow-leopard/
-set nocompatible
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-"autocmd FileType python setlocal expandtab
-filetype on
-filetype plugin on
-filetype plugin indent on
-set ofu=syntaxcomplete#Complete
-set tags+=$HOME/.vim/tags/python.ctags
-syntax on
-set synmaxcol=1000
-
-" From github.com/spf13/spf13-vim
-nnoremap Y y$
-cmap w!! w !sudo tee % >/dev/null
-let g:SuperTabDefaultCompletionType = "context"
-
-" From http://macvim.org/OSX/index.php
-set backupcopy=yes
-
-"TODO remove old quickfix commands
-"nnoremap <silent> <S-F6> :cn<CR>
-"nnoremap <silent> <S-F5> :cp<CR>
-
-" Disable middle mouse pasting
-nnoremap <MiddleMouse> <Nop>
-nnoremap <2-MiddleMouse> <Nop>
-nnoremap <3-MiddleMouse> <Nop>
-nnoremap <4-MiddleMouse> <Nop>
-
-inoremap <MiddleMouse> <Nop>
-inoremap <2-MiddleMouse> <Nop>
-inoremap <3-MiddleMouse> <Nop>
-inoremap <4-MiddleMouse> <Nop>
-
-" From old config
-if exists('+autochdir')
-    set autochdir
-else
-    autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
-endif
-set autoindent
-set hidden " don't force us to save when switching buffers
-set relativenumber " show relative line numbers
-set autoread " Auto re-read a buffer when written by another application
-set encoding=utf-8 " Default file encoding is utf-8
-set incsearch " Show search matches as you type
-set ignorecase " Usually I don't care about case when searching
-set paste " Permit good pasting
-set ruler " Enable ruler on status line.
-set scrolloff=3 " Keep 3 lines above and below cursor.
-set smartcase " Only ignore case when we type lower case when searching
-set smarttab " beginning of line tab hits are by shiftwidth, not softtabstop
-set wildignore=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,*.pyc,*.pyo
-set wildmenu " Better filename completion etc.
-set wildmode=longest:full,full " complete only up to the point of ambiguity (while still showing you what your options are)
-set hlsearch " search highlighting
-set colorcolumn=80 "visual indicator for max chars
-
-" Use the below highlight group when displaying bad whitespace is desired
-highlight BadWhitespace ctermbg=red guibg=red
-highlight LineTooLong term=inverse,bold cterm=inverse,bold
-
-" For full syntax highlighting:
-let python_highlight_all=1
-let python_space_errors=1
-let python_no_tab_space_error=1
-
-" firefox style tabbing ------------------------------------------------
-
-nmap <D-1> 1gt
-nmap <D-2> 2gt
-nmap <D-3> 3gt
-nmap <D-4> 4gt
-nmap <D-5> 5gt
-nmap <D-6> 6gt
-nmap <D-7> 7gt
-nmap <D-8> 8gt
-nmap <D-9> 9gt
-nmap <D-0> 10gt
-
-nmap <D-Up> :tabnew<CR>
-nmap <D-Right> :tabnext<CR>
-nmap <D-Left> :tabprevious<CR>
-
-"Whitespace remover
-nmap <leader>w :%s/\s\+$//<CR>
-
-"autocmd FileType javascript set makeprg=jslint\ %
-"autocmd FileType python set makeprg=flake8\ %
-"autocmd FileType python map <buffer> <F5> :call Flake8()<CR>
-
-" More recent additions
+" Misc
+filetype plugin indent on       " Do filetype detection and load custom file plugins and indent files
+" Always edit file, even when swap file is found
+set shortmess+=A
+set hidden                      " Don't abandon buffers moved to the background
+set wildmenu                    " Enhanced completion hints in command line
+set backspace=eol,start,indent  " Allow backspacing over indent, eol, & start
+set complete=.,w,b,u,U,t,i,d    " Do lots of scanning on tab completion
+set directory=~/.vim/swap       " Directory to use for the swap file
+set diffopt=filler,iwhite       " In diff mode, ignore whitespace changes and align unchanged lines
+set nowrap
+set visualbell
 set mouse=a
-:au FocusLost * :set number
-:au FocusGained * :set relativenumber
+" Indentation and tabbing
+set autoindent smartindent
+set smarttab                    " Make <tab> and <backspace> smarter
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set incsearch
+set magic
+" viminfo: remember certain things when we exit
+" (http://vimdoc.sourceforge.net/htmldoc/usr_21.html)
+"   %    : saves and restores the buffer list
+"   '100 : marks will be remembered for up to 30 previously edited files
+"   /100 : save 100 lines from search history
+"   h    : disable hlsearch on start
+"   "500 : save up to 500 lines for each register
+"   :100 : up to 100 lines of command-line history will be remembered
+"   n... : where to save the viminfo files
+set viminfo=%100,'100,/100,h,\"500,:100,n~/.vim/viminfo
+
+" Undo
+set undolevels=10000
+if has("persistent_undo")
+  set undodir=~/.vim/undo       " Allow undoes to persist even after a file is closed
+  set undofile
+endif
+
+" Search settings
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set showmatch
+
+" to_html settings
+"let html_number_lines = 1
+"let html_ignore_folding = 1
+"let html_use_css = 1
+"let html_no_pre = 0
+"let use_xhtml = 1
+"let xml_use_xhtml = 1
+
+"""""""""""""""""""""""""
+" Custom functions
+"""""""""""""""""""""""""
+" When opening a file, always jump to the last cursor position
+autocmd BufReadPost *
+    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+    \     exe "normal g'\"" |
+    \ endif |
