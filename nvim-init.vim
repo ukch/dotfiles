@@ -81,7 +81,7 @@ Plug 'w0rp/ale'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 let g:ale_linters = {
-\    'python': ['flake8', 'black'],
+\    'python': ['flake8', 'black', 'mypy'],
 \    'javascript.jsx': ['stylelint, eslint'],
 \    'typescript': ['tslint'],
 \}
