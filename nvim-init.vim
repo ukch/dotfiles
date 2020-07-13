@@ -31,8 +31,10 @@ Plug 'neo4j-contrib/cypher-vim-syntax'
 Plug 'chrisbra/Recover.vim'
 Plug 'bogado/file-line'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-autocmd FileType kotlin let b:coc_root_patterns = ['.gradle']
+" Disabled because it conflicts with YCM
+" TODO figure out how to get them to work together
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"autocmd FileType kotlin let b:coc_root_patterns = ['.gradle']
 
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
