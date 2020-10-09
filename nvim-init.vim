@@ -31,6 +31,14 @@ Plug 'neo4j-contrib/cypher-vim-syntax'
 Plug 'chrisbra/Recover.vim'
 Plug 'bogado/file-line'
 
+Plug 'cdata/vim-tagged-template'
+let g:taggedtemplate#tagSyntaxMap = {
+  \ "html": "html",
+  \ "xml": "xml",
+  \ "md":   "markdown",
+  \ "css":  "css" }
+autocmd FileType javascript,typescript : call taggedtemplate#applySyntaxMap()
+
 " Disabled because it conflicts with YCM
 " TODO figure out how to get them to work together
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
