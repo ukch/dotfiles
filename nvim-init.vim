@@ -21,7 +21,7 @@ if exists('g:GtkGuiLoaded')
     source /usr/share/nvim-gtk/runtime/plugin/nvim_gui_shim.vim
     call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
     NGPreferDarkTheme on
-    nnoremap <leader>a :NGToggleSidebar<CR>
+    "nnoremap <leader>a :NGToggleSidebar<CR>
 endif
 
 Plug 'alexlafroscia/postcss-syntax.vim'
