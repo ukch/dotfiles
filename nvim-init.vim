@@ -91,7 +91,8 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_linters = {
 \    'python': ['flake8', 'black', 'mypy'],
 \    'javascript.jsx': ['stylelint, eslint'],
-\    'typescript': ['tslint'],
+\    'graphql': ['gqlint'],
+\    'typescript': ['eslint', 'tslint'],
 \}
 
 let g:ale_linter_aliases = {'jsx': 'css'}
