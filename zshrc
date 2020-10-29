@@ -37,6 +37,7 @@ fpath+=~/.zfunc
 
 source $ZSH/oh-my-zsh.sh
 
+setopt share_history
 setopt interactivecomments
 
 export LESSOPEN="| /usr/bin/lesspipe %s";
@@ -88,3 +89,6 @@ export SDKMAN_DIR="/home/joel/.sdkman"
 
 # this must be at the end because aliasing 'rm' messes with the sdkman script
 source ~/.aliases
+
+# added by pipx (https://github.com/pipxproject/pipx)
+export PATH="/home/joel/.local/bin:$PATH"
