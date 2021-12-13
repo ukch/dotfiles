@@ -29,7 +29,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(chucknorris colored-man-pages debian django github fabric heroku history node pip python sudo command-not-found docker-machine virtualenvwrapper)
+plugins=(chucknorris colored-man-pages debian github fabric heroku history node pip python sudo command-not-found docker-machine virtualenvwrapper octozen)
 
 # Customize to your needs...
 export PATH=$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
@@ -62,6 +62,9 @@ has_virtualenv() {
         if [ -e pyproject.toml ]; then
             poetry shell
             return
+        elif [ -e Pipfile ]; then
+            pipenv shell
+            return
         fi
         type deactivate > /dev/null 2>&1
         if [ $? -eq 0 ]; then
@@ -92,3 +95,12 @@ source ~/.aliases
 
 # added by pipx (https://github.com/pipxproject/pipx)
 export PATH="/home/joel/.local/bin:$PATH"
+
+export PATH="$HOME/.poetry/bin:$PATH"
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+
+# Added by serverless binary installer
+export PATH="$HOME/.serverless/bin:$PATH"

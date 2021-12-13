@@ -30,6 +30,7 @@ Plug 'othree/es.next.syntax.vim'
 Plug 'neo4j-contrib/cypher-vim-syntax'
 Plug 'chrisbra/Recover.vim'
 Plug 'bogado/file-line'
+Plug 'neoclide/jsonc.vim'
 
 Plug 'cdata/vim-tagged-template'
 let g:taggedtemplate#tagSyntaxMap = {
@@ -134,9 +135,9 @@ nmap <M-c> <leader>c<space>
 "nnoremap <leader>b :DmenuFinderFindBuffer<CR>
 
 " NyaoVim plugins
-Plug 'rhysd/nyaovim-popup-tooltip'
-Plug 'rhysd/nyaovim-markdown-preview'
-Plug 'rhysd/nyaovim-mini-browser'
+"Plug 'rhysd/nyaovim-popup-tooltip'
+"Plug 'rhysd/nyaovim-markdown-preview'
+"Plug 'rhysd/nyaovim-mini-browser'
 
 
 Plug 'editorconfig/editorconfig-vim'

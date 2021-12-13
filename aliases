@@ -1,8 +1,6 @@
 # vim: set ft=sh
 
-alias rm="echo Please use trash or /bin/rm && false"
-alias gvir="gvim --remote"
-alias pt="pytest --emoji"
+alias pt="pytest --emoji --maxfail=10"
 alias vim="nvim -n" # ignore swap files for terminal vim sessions
 alias less="less -r"
 
