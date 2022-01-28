@@ -12,8 +12,8 @@ export apt_upgr=upgrade
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 export BUILDER=pbuilder  # for git-buildpackage
 
-export PATH=./node_modules/.bin:$PATH:$HOME/opt/android-sdk-linux/tools:$HOME/opt/android-sdk-linux/platform-tools
-export ANDROID_HOME=/opt/android-sdk-linux
+export PATH=./node_modules/.bin:/snap/bin:$PATH
+export EDITOR=vim
 
 ###-tns-completion-start-###
 if [ -f /home/joel/.tnsrc ]; then
