@@ -7,4 +7,4 @@ gitignore       = "~/.gitignore"
 "nvim-init.vim" = "~/.config/nvim/init.vim"
 zshrc           = "~/.zshrc"
 vimrc           = "~/.vimrc"  # for vim.tiny
-pdbrc.py        = "~/.pdbrc.py"
+pdbrc           = "~/.pdbrc.py"
