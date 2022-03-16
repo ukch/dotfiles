@@ -13,7 +13,7 @@ let g:golden_ratio_exclude_nonmodifiable = 1
 "Plug 'Glench/Vim-Jinja2-Syntax'
 
 " Colour scheme
-if exists('g:GuiLoaded') || $TERM == "xterm-256color"
+if exists('g:GuiLoaded') || has('gui_vimr') || $TERM == "xterm-256color"
     Plug 'chriskempson/base16-vim'
 endif
 
@@ -152,7 +152,7 @@ Plug 'AndrewRadev/linediff.vim'
 " Add plugins to &runtimepath
 call plug#end()
 
-if $TERM == "xterm-256color"
+if $TERM == "xterm-256color" || has('gui_vimr')
     set termguicolors
     colorscheme base16-atelier-forest
     hi Search guifg=black  "make search highlighting more readable
@@ -243,3 +243,8 @@ nnoremap <leader>r :call NumberToggle()<cr>
 nnoremap ; :
 " Use Q to execute default register.
 nnoremap Q @q
+
+" Mac specific settings
+if has('mac')
+  set clipboard=unnamed
+endif
