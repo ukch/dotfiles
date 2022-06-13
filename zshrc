@@ -70,7 +70,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(cargo chucknorris colored-man-pages git github fabric heroku history node pip python sudo command-not-found virtualenvwrapper octozen)
+plugins=(chucknorris colored-man-pages git github fabric heroku history node pip python sudo command-not-found virtualenvwrapper octozen)
 
 # Customize to your needs...
 export PATH=$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
@@ -137,6 +137,6 @@ export SDKMAN_DIR="$HOME/.sdkman"
 source ~/.aliases
 
 # added by pipx (https://github.com/pipxproject/pipx)
-==== BASE ====
-export PATH="/home/joel/.local/bin:$PATH"
-==== BASE ====
+export PATH="$HOME/.local/bin:$PATH"
+
+[[ -e ~/.zshrc.local ]] && source ~/.zshrc.local
