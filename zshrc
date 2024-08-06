@@ -122,8 +122,7 @@ venv_cd () {
 
 alias venv=has_virtualenv
 
-#export NVM_DIR=~/.nvm
-export NVM_DIR=/usr/local/opt/nvm
+export NVM_DIR=~/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 venv  # Try and get into a virtualenv on start
@@ -138,5 +137,12 @@ source ~/.aliases
 
 # added by pipx (https://github.com/pipxproject/pipx)
 export PATH="$HOME/.local/bin:$PATH"
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+
+# Added by serverless binary installer
+export PATH="$HOME/.serverless/bin:$PATH"
 
 [[ -e ~/.zshrc.local ]] && source ~/.zshrc.local
