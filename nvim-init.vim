@@ -76,6 +76,10 @@ nnoremap <leader>gt :YcmCompleter GoTo<CR>" Close the documentation window when 
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 set completeopt=menu,longest,menuone
 
+" XXX try asyncomplete instead of YCM
+"Plug 'prabirshrestha/asyncomplete.vim'
+"Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
 " CtrlP
 Plug 'ctrlpvim/ctrlp.vim'
 nnoremap <leader>e :CtrlP<CR>
@@ -93,10 +97,16 @@ let g:ale_linters = {
 \    'python': ['flake8', 'black', 'mypy'],
 \    'javascript.jsx': ['stylelint, eslint'],
 \    'graphql': ['gqlint'],
-\    'typescript': ['eslint', 'tslint'],
+\    'typescript': ['eslint'],
 \}
 
-let g:ale_linter_aliases = {'jsx': 'css'}
+"let g:ale_linter_aliases = {'jsx': 'css'}
+
+" XXX trying this as a replacement for ale
+"Plug 'prabirshrestha/vim-lsp'
+"Plug 'mattn/vim-lsp-settings'
+
+Plug 'prettier/vim-prettier'
 
 "Plug 'vim-syntastic/syntastic'
 "set statusline+=%#warningmsg#
@@ -148,9 +158,55 @@ Plug 'inkarkat/vim-IndentConsistencyCop'
 
 Plug 'AndrewRadev/linediff.vim'
 
+"Plug 'tamton-aquib/zone.nvim'
+"lua require("zone").setup { style="dvd" }
+
+"Plug 'tamton-aquib/duck.nvim'
+"lua require("duck").hatch()
+
+" FIXME does this even work??
+Plug 'lewis6991/hover.nvim'
+
+Plug 'MunifTanjim/nui.nvim'
+Plug 'cseickel/diagnostic-window.nvim'
 
 " Add plugins to &runtimepath
 call plug#end()
+
+lua << EOF
+require("hover").setup {
+    init = function()
+    -- Require providers
+    require("hover.providers.lsp")
+    -- require('hover.providers.gh')
+    -- require('hover.providers.gh_user')
+    -- require('hover.providers.jira')
+    -- require('hover.providers.man')
+    -- require('hover.providers.dictionary')
+    end,
+    preview_opts = {
+        border = 'single'
+    },
+    -- Whether the contents of a currently open hover window should be moved
+    -- to a :h preview-window when pressing the hover keymap.
+    preview_window = false,
+    title = true,
+    mouse_providers = {
+        'LSP'
+    },
+    mouse_delay = 1000
+}
+
+-- Setup keymaps
+vim.keymap.set("n", "K", require("hover").hover, {desc = "hover.nvim"})
+vim.keymap.set("n", "gK", require("hover").hover_select, {desc = "hover.nvim (select)"})
+vim.keymap.set("n", "<C-p>", function() require("hover").hover_switch("previous") end, {desc = "hover.nvim (previous source)"})
+vim.keymap.set("n", "<C-n>", function() require("hover").hover_switch("next") end, {desc = "hover.nvim (next source)"})
+
+-- Mouse support
+vim.keymap.set('n', '<MouseMove>', require('hover').hover_mouse, { desc = "hover.nvim (mouse)" })
+vim.o.mousemoveevent = true
+EOF
 
 if $TERM == "xterm-256color" || has('gui_vimr')
     set termguicolors
@@ -176,6 +232,7 @@ set softtabstop=4
 set shiftwidth=4        " Indentation amount for < and > commands.
 set hidden              " Allow switching buffer without saving
 set mouse=a             " Make mouse work as expected
+set mousemodel=extend   " Do not show annoying popup on right click
 
 set noerrorbells        " No beeps.
 set modeline            " Enable modeline.
