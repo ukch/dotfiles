@@ -18,12 +18,12 @@ if exists('g:GuiLoaded') || has('gui_vimr') || $TERM == "xterm-256color"
     set guifont=Monaco:h12
 endif
 
-if exists('g:GtkGuiLoaded')
-    source /usr/share/nvim-gtk/runtime/plugin/nvim_gui_shim.vim
-    call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
-    NGPreferDarkTheme on
+"if exists('g:GtkGuiLoaded')
+    "source /usr/share/nvim-gtk/runtime/plugin/nvim_gui_shim.vim
+    "call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
+    "NGPreferDarkTheme on
     "nnoremap <leader>a :NGToggleSidebar<CR>
-endif
+"endif
 
 Plug 'alexlafroscia/postcss-syntax.vim'
 Plug 'sheerun/vim-polyglot'
@@ -54,6 +54,11 @@ nnoremap <silent> <S-F5> :cp<CR>
 
 Plug 'vim-scripts/TaskList.vim'
 Plug 'vimlab/split-term.vim'
+
+Plug 'chipsenkbeil/distant.nvim', {
+\ 'branch': 'v0.3',
+"\ 'do': ':lua require("distant"):setup()'
+\ }
 
 "Use YouCompleteMe
 Plug 'Valloric/YouCompleteMe'
@@ -99,19 +104,27 @@ Plug 'w0rp/ale'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 let g:ale_linters = {
-\    'python': ['flake8', 'black', 'mypy'],
+\    'python': ['ruff', 'flake8', 'black', 'mypy'],
 \    'javascript.jsx': ['stylelint, eslint'],
 \    'graphql': ['gqlint'],
 \    'typescript': ['eslint'],
 \}
 
+let g:ale_fixers = {
+\    'python': ['ruff'],
+\    'javascript': ['prettier'],
+\    'typescript': ['prettier'],
+\}
+
 "let g:ale_linter_aliases = {'jsx': 'css'}
+
+nmap <leader>p :ALEFix<CR>
 
 " XXX trying this as a replacement for ale
 "Plug 'prabirshrestha/vim-lsp'
 "Plug 'mattn/vim-lsp-settings'
 
-Plug 'prettier/vim-prettier'
+"Plug 'prettier/vim-prettier'
 
 "Plug 'vim-syntastic/syntastic'
 "set statusline+=%#warningmsg#
@@ -175,8 +188,13 @@ Plug 'lewis6991/hover.nvim'
 Plug 'MunifTanjim/nui.nvim'
 Plug 'cseickel/diagnostic-window.nvim'
 
+Plug 'supermaven-inc/supermaven-nvim'
+
 " Add plugins to &runtimepath
 call plug#end()
+
+lua require("supermaven-nvim").setup({})
+lua require("distant"):setup()
 
 lua << EOF
 require("hover").setup {
@@ -222,7 +240,7 @@ else
 endif
 
 set background=dark
-set colorcolumn=80 "visual indicator for max chars
+set colorcolumn=160 "visual indicator for max chars
 
 set showcmd             " Show (partial) command in status line.
 set showmatch           " Show matching brackets.
@@ -286,7 +304,6 @@ set autochdir
 
 "Whitespace remover
 nmap <leader>w :%s/\s\+$//<CR>
-
 
 " Relative numbering
 function! NumberToggle()

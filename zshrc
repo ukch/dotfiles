@@ -8,7 +8,7 @@ ZSH=$HOME/.oh-my-zsh
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="gallois"
+ZSH_THEME="mh"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -70,7 +70,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(chucknorris colored-man-pages git github fabric heroku history node pip python sudo command-not-found virtualenvwrapper octozen)
+plugins=(chucknorris colored-man-pages debian git github fabric heroku history node pip python sudo command-not-found octozen)
 
 # Customize to your needs...
 export PATH=$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
@@ -81,12 +81,12 @@ source $ZSH/oh-my-zsh.sh
 setopt share_history
 setopt interactivecomments
 
-#export LESSOPEN="| /usr/bin/lesspipe %s";
-#export LESSCLOSE="/usr/bin/lesspipe %s %s";
-export LESSOPEN="|/usr/local/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
+export LESSOPEN="| /usr/bin/lesspipe %s";
+export LESSCLOSE="/usr/bin/lesspipe %s %s";
+#export LESSOPEN="|/usr/local/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
 
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-#source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+source /usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -118,14 +118,14 @@ venv_cd () {
     builtin cd "$@" && has_virtualenv
 }
 # This doesn't work with .project files
-#alias cd="venv_cd"
+alias cd="venv_cd"
 
 alias venv=has_virtualenv
 
 export NVM_DIR=~/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-venv  # Try and get into a virtualenv on start
+#venv  # Try and get into a virtualenv on start
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
@@ -146,3 +146,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.serverless/bin:$PATH"
 
 [[ -e ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# qlty
+export QLTY_INSTALL="$HOME/.qlty"
+export PATH="$QLTY_INSTALL/bin:$PATH"
