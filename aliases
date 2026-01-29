@@ -13,7 +13,7 @@ export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 export BUILDER=pbuilder  # for git-buildpackage
 
 export ANDROID_HOME=/usr/lib/android-sdk
-export PATH=./node_modules/.bin:/snap/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+export PATH=./node_modules/.bin:/snap/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH:~/Library/Python/3.9/bin
 export EDITOR=vim
 
 ###-tns-completion-start-###

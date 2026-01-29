@@ -15,6 +15,7 @@ let g:golden_ratio_exclude_nonmodifiable = 1
 " Colour scheme
 if exists('g:GuiLoaded') || has('gui_vimr') || $TERM == "xterm-256color"
     Plug 'chriskempson/base16-vim'
+    set guifont=Monaco:h12
 endif
 
 if exists('g:GtkGuiLoaded')
@@ -56,11 +57,15 @@ Plug 'vimlab/split-term.vim'
 
 "Use YouCompleteMe
 Plug 'Valloric/YouCompleteMe'
-let g:python_host_prog = '/usr/bin/python3'
-let g:python3_host_prog = '/usr/bin/python3'
-let g:ycm_python_binary_path= '/usr/bin/python3'
-let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
-let g:ycm_server_python_interpreter = '/usr/bin/python3'
+"let g:python_host_prog = '/usr/bin/python3'
+"let g:python3_host_prog = '/usr/bin/python3'
+let g:python3_host_prog = '/Users/joel/.pyenv/shims/python'
+"let g:ycm_python_binary_path= '/usr/bin/python3'
+let g:ycm_python_binary_path = '/Users/joel/.pyenv/shims/python'
+"let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
+let g:ycm_path_to_python_interpreter = '/Users/joel/.pyenv/shims/python'
+"let g:ycm_server_python_interpreter = '/usr/bin/python3'
+let g:ycm_server_python_interpreter = '/Users/joel/.pyenv/shims/python'
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1

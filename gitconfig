@@ -29,10 +29,6 @@
 	enabled = true
 [grep]
 	linenumber = true
-[user]
-	signingkey = CCA91ED95ADC0B6B
-[commit]
-	gpgsign = false
 [pager]
     branch =
 [init]

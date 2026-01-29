@@ -8,3 +8,4 @@ gitignore       = "~/.gitignore"
 zshrc           = "~/.zshrc"
 vimrc           = "~/.vimrc"  # for vim.tiny
 pdbrc.py        = "~/.pdbrc.py"
+lessfilter      = "~/.lessfilter"
