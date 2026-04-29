@@ -9,3 +9,4 @@ zshrc           = "~/.zshrc"
 vimrc           = "~/.vimrc"  # for vim.tiny
 pdbrc.py        = "~/.pdbrc.py"
 lessfilter      = "~/.lessfilter"
+claude_settings.json = "~/.claude/settings.json"
